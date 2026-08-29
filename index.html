@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StyleHub｜服飾購物網站</title>
+<style>
+:root{--bg:#f6f6f3;--card:#fff;--text:#191919;--muted:#777;--line:#ddd;--accent:#d65d3a;--dark:#111}
+body.dark{--bg:#111;--card:#1d1d1d;--text:#f5f5f5;--muted:#bbb;--line:#333;--dark:#f5f5f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}button,input,select{font:inherit}.container{width:min(1180px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+.nav{min-height:70px;display:flex;align-items:center;gap:20px}.logo{font-size:1.4rem;font-weight:900}.logo span{color:var(--accent)}
+.links{margin-left:auto;display:flex;gap:22px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer}
+.menu{display:none}.cart{position:relative}.count{position:absolute;right:-6px;top:-7px;background:var(--accent);color:#fff;border-radius:99px;padding:2px 7px;font-size:.75rem}
+.hero{padding:60px 0}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.hero h1{font-size:clamp(3rem,7vw,6.5rem);line-height:.95;margin:10px 0 20px}.hero p{color:var(--muted);line-height:1.8}
+.hero-img{min-height:540px;border-radius:28px;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85') center/cover}
+.primary{display:inline-block;background:var(--dark);color:var(--card);border:0;padding:13px 20px;border-radius:12px;font-weight:800;cursor:pointer}
+section{padding:70px 0}.title{margin-bottom:26px}.title h2{font-size:clamp(2rem,4vw,3rem);margin:0}.title p{color:var(--muted)}
+.categories,.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.cat{padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--card);cursor:pointer}
+.cat strong{display:block;font-size:1.2rem}.cat span{color:var(--muted);font-size:.9rem}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:10px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:24px}
+.filters input,.filters select{border:1px solid var(--line);background:var(--card);color:var(--text);padding:12px;border-radius:10px}
+.product{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.product:hover{transform:translateY(-5px)}
+.product img{width:100%;aspect-ratio:4/5;object-fit:cover}.body{padding:16px}.meta{font-size:.8rem;color:var(--muted)}.body h3{margin:7px 0}.price{font-weight:900}
+.product-actions{display:flex;gap:8px}.product-actions button{flex:1;padding:10px;border-radius:10px;cursor:pointer}.view{border:1px solid var(--line);background:transparent;color:var(--text)}.add{border:0;background:var(--dark);color:var(--card)}
+.about{background:var(--card)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.about-img{min-height:420px;border-radius:25px;background:url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1300&q=85') center/cover}
+.about p{color:var(--muted);line-height:1.8}.newsletter{text-align:center}.box{background:var(--dark);color:var(--card);padding:42px 20px;border-radius:26px}.mail{max-width:600px;margin:20px auto 0;display:grid;grid-template-columns:1fr auto;gap:8px}.mail input{padding:13px;border:0;border-radius:10px}.mail button{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:13px 18px;font-weight:800}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted)}
+dialog{width:min(820px,calc(100% - 30px));padding:0;border:0;border-radius:20px;background:var(--card);color:var(--text)}dialog::backdrop{background:#000a}.modal{display:grid;grid-template-columns:1fr 1fr}.modal img{width:100%;height:100%;min-height:420px;object-fit:cover}.modal-body{padding:28px}.close{float:right}
+.empty{text-align:center;color:var(--muted);padding:30px;display:none}
+@media(max-width:900px){.links{display:none;position:fixed;top:72px;left:16px;right:16px;background:var(--card);border:1px solid var(--line);padding:15px;border-radius:15px;flex-direction:column}.links.open{display:flex}.menu{display:block}.hero-grid,.about-grid{grid-template-columns:1fr}.products,.categories{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.products,.categories,.filters,.modal,.mail{grid-template-columns:1fr}.hero-img{min-height:360px}.product-actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a class="logo" href="#top">Style<span>Hub</span></a>
+<nav class="links" id="links"><a href="#shop">商品</a><a href="#category">分類</a><a href="#about">關於</a><a href="#newsletter">訂閱</a></nav>
+<div class="actions">
+<button class="btn menu" id="menu">☰</button>
+<button class="btn" id="theme">🌙</button>
+<button class="btn cart">🛒 購物車 <span class="count" id="count">0</span></button>
+</div>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="container hero-grid">
+<div><small>NEW SEASON 2026</small><h1>穿出<br>你的風格</h1><p>單一 index.html 的服飾購物網站範例，CSS 與 JavaScript 全部整合在同一檔案，可直接放到 GitHub Pages。</p><a class="primary" href="#shop">立即選購</a></div>
+<div class="hero-img"></div>
+</div>
+</section>
+
+<section id="category">
+<div class="container">
+<div class="title"><h2>熱門分類</h2><p>點擊分類可直接篩選商品。</p></div>
+<div class="categories">
+<div class="cat" data-cat="top"><strong>上衣</strong><span>T-Shirt / Shirt</span></div>
+<div class="cat" data-cat="jacket"><strong>外套</strong><span>Jacket / Coat</span></div>
+<div class="cat" data-cat="pants"><strong>褲裝</strong><span>Jeans / Pants</span></div>
+<div class="cat" data-cat="accessory"><strong>配件</strong><span>Bag / Shoes</span></div>
+</div>
+</div>
+</section>
+
+<section id="shop">
+<div class="container">
+<div class="title"><h2>精選商品</h2><p>搜尋、分類與價格篩選。</p></div>
+<div class="filters">
+<input id="search" placeholder="搜尋 T-Shirt、外套、牛仔褲...">
+<select id="catFilter"><option value="all">全部分類</option><option value="top">上衣</option><option value="jacket">外套</option><option value="pants">褲裝</option><option value="accessory">配件</option></select>
+<select id="priceFilter"><option value="all">全部價格</option><option value="low">1000 以下</option><option value="mid">1000–2000</option><option value="high">2000 以上</option></select>
+<button class="btn" id="reset">重設</button>
+</div>
+<div class="products" id="products">
+
+<article class="product" data-name="純棉 T-Shirt 白色 上衣" data-cat="top" data-price="690">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85" alt="純棉T-Shirt">
+<div class="body"><div class="meta">TOP · NEW</div><h3>經典純棉 T-Shirt</h3><div class="price">NT$ 690</div><div class="product-actions"><button class="view" data-title="經典純棉 T-Shirt" data-desc="100% 純棉，標準版型，適合日常穿搭。" data-price="NT$ 690" data-img="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90">查看</button><button class="add">加入購物車</button></div></div>
+</article>
+
+<article class="product" data-name="牛仔外套 Denim Jacket" data-cat="jacket" data-price="2280">
+<img src="https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?auto=format&fit=crop&w=800&q=85" alt="牛仔外套">
+<div class="body"><div class="meta">JACKET · BEST</div><h3>城市牛仔外套</h3><div class="price">NT$ 2,280</div><div class="product-actions"><button class="view" data-title="城市牛仔外套" data-desc="中磅丹寧布料，寬鬆剪裁。" data-price="NT$ 2,280" data-img="https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?auto=format&fit=crop&w=1000&q=90">查看</button><button class="add">加入購物車</button></div></div>
+</article>
+
+<article class="product" data-name="休閒長褲 Wide Pants" data-cat="pants" data-price="1480">
+<img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85" alt="休閒長褲">
+<div class="body"><div class="meta">PANTS · NEW</div><h3>寬版休閒長褲</h3><div class="price">NT$ 1,480</div><div class="product-actions"><button class="view" data-title="寬版休閒長褲" data-desc="俐落寬版剪裁，適合簡約穿搭。" data-price="NT$ 1,480" data-img="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=1000&q=90">查看</button><button class="add">加入購物車</button></div></div>
+</article>
+
+<article class="product" data-name="休閒鞋 Sneakers 配件" data-cat="accessory" data-price="1680">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" alt="休閒鞋">
+<div class="body"><div class="meta">SHOES · HOT</div><h3>極簡休閒鞋</h3><div class="price">NT$ 1,680</div><div class="product-actions"><button class="view" data-title="極簡休閒鞋" data-desc="日常百搭鞋款，適合休閒與街頭風格。" data-price="NT$ 1,680" data-img="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=90">查看</button><button class="add">加入購物車</button></div></div>
+</article>
+
+</div>
+<div class="empty" id="empty">找不到符合條件的商品。</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="container about-grid"><div class="about-img"></div><div><h2>關於 StyleHub</h2><p>這個範例把原本的 index.html、style.css、main.js 合併成單一 index.html，方便初學者直接上傳 GitHub Pages。</p><p>包含 RWD、商品分類、搜尋篩選、商品視窗、購物車數量、暗黑模式與 Email 訂閱驗證。</p></div></div>
+</section>
+
+<section class="newsletter" id="newsletter">
+<div class="container"><div class="box"><h2>訂閱新品通知</h2><form class="mail" id="mailForm"><input id="email" type="email" placeholder="name@example.com" required><button>訂閱</button></form><div id="status"></div></div></div>
+</section>
+</main>
+
+<footer><div class="container">© <span id="year"></span> StyleHub · GitHub Pages Demo</div></footer>
+
+<dialog id="modal">
+<div class="modal"><img id="modalImg"><div class="modal-body"><button class="btn close" id="close">✕</button><h2 id="modalTitle"></h2><h3 id="modalPrice"></h3><p id="modalDesc"></p><button class="primary" id="modalAdd">加入購物車</button></div></div>
+</dialog>
+
+<script>
+const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+q('#menu').onclick=()=>q('#links').classList.toggle('open');
+q('#theme').onclick=()=>{document.body.classList.toggle('dark');localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light')};
+if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark');
+
+const products=qa('.product');
+function priceOK(p,r){p=Number(p);return r==='all'||(r==='low'&&p<1000)||(r==='mid'&&p>=1000&&p<=2000)||(r==='high'&&p>2000)}
+function filter(){
+ const k=q('#search').value.toLowerCase(),c=q('#catFilter').value,r=q('#priceFilter').value;
+ let n=0;
+ products.forEach(p=>{const show=(!k||p.dataset.name.toLowerCase().includes(k))&&(c==='all'||p.dataset.cat===c)&&priceOK(p.dataset.price,r);p.hidden=!show;if(show)n++});
+ q('#empty').style.display=n?'none':'block';
+}
+q('#search').oninput=filter;q('#catFilter').onchange=filter;q('#priceFilter').onchange=filter;
+q('#reset').onclick=()=>{q('#search').value='';q('#catFilter').value='all';q('#priceFilter').value='all';filter()};
+qa('.cat').forEach(x=>x.onclick=()=>{q('#catFilter').value=x.dataset.cat;filter();location.hash='shop'});
+
+let cart=0;function add(){q('#count').textContent=++cart}qa('.add').forEach(b=>b.onclick=add);q('#modalAdd').onclick=()=>{add();q('#modal').close()};
+qa('.view').forEach(b=>b.onclick=()=>{q('#modalImg').src=b.dataset.img;q('#modalTitle').textContent=b.dataset.title;q('#modalPrice').textContent=b.dataset.price;q('#modalDesc').textContent=b.dataset.desc;q('#modal').showModal()});
+q('#close').onclick=()=>q('#modal').close();
+
+q('#mailForm').onsubmit=e=>{e.preventDefault();q('#status').textContent=q('#email').checkValidity()?'訂閱成功！此為前端示範，尚未連接資料庫。':'請輸入正確 Email。'};
+q('#year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
