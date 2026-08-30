@@ -1,0 +1,131 @@
+<!DOCTYPE html> <!-- 宣告此文件為 HTML5 規格的網頁 -->
+<html lang="zh-Hant-TW"> <!-- 設定網頁主語言為台灣繁體中文 -->
+<head> <!-- 網頁網頭區，用來放置後台設定、字型與樣式資訊 -->
+    <meta charset="UTF-8"> <!-- 設定網頁編碼為 UTF-8，防止中文文字變成亂碼 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 設定響應式視窗，確保在手機與電腦上都能完美縮放 -->
+    <title>精選電商首頁展示</title> <!-- 設定瀏覽器分頁標題列顯示的文字 -->
+    <style> /* 開始編寫網頁的 CSS 基礎樣式 */
+        body { font-family: sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; } /* 基本字型、清除邊距、設定行高與預設文字顏色 */
+        section { padding: 60px 20px; text-align: center; } /* 為所有主要區塊設定上下留白、左右內縮與文字置中 */
+        .container { max-width: 1200px; margin: 0 auto; } /* 設定內容最大寬度為 1200px 並自動置中對齊 */
+        .btn { display: inline-block; padding: 12px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; } /* 網頁按鈕的共用樣式：背景、文字、圓角與粗體 */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; } /* 3欄響應式網格：寬度自動分配，間距 30px */
+        
+        /* 1. Hero 區塊專屬樣式 */
+        .hero { background: #f3f4f6; padding: 100px 20px; } /* 頂部橫幅背景色與加大上下加深留白 */
+        .hero h1 { font-size: 2.5rem; margin-bottom: 20px; } /* 設定主標題字體大小與下方間距 */
+        
+        /* 2. Category & 3. Product 區塊專屬樣式 */
+        .card { border: 1px solid #e5e7eb; padding: 20px; border-radius: 8px; background: white; } /* 卡片樣式：外框、內襯、圓角與白底 */
+        .card img { max-width: 100%; height: 200px; object-fit: cover; border-radius: 4px; } /* 圖片縮圖設定：滿寬、固定高度且等比例裁剪 */
+        .price { color: #dc2626; font-weight: bold; font-size: 1.2rem; margin: 10px 0; } /* 價格樣式：紅色、粗體與明顯字級 */
+        
+        /* 4. About 區塊專屬樣式 */
+        .about { background: #fafafa; } /* 關於我們採用淡灰色背景做區隔 */
+        .about-text { max-width: 800px; margin: 0 auto; font-size: 1.1rem; } /* 故事文字限制寬度以利閱讀，並放大字體 */
+        
+        /* 5. Newsletter 區塊專屬樣式 */
+        .newsletter { background: #1e293b; color: white; } /* 電子報區塊採用深色背景與白色文字 */
+        .input-group { margin-top: 25px; } /* 填寫欄位與上方文字的間距 */
+        .email-input { padding: 12px; width: 250px; border: none; border-radius: 4px; margin-right: 10px; } /* 輸入框樣式：內襯、寬度與圓角 */
+        .submit-btn { padding: 12px 24px; background: #f59e0b; color: #1e293b; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; } /* 訂閱按鈕樣式：亮黃色背景與游標效果 */
+    </style> <!-- 結束 CSS 樣式設定 -->
+</head> <!-- 結束網頭區 -->
+<body> <!-- 開始網頁主體內容區，使用者看得到的都在這 -->
+
+    <!-- ========================================================================== -->
+    <!-- 1. HERO SECTION (頂部橫幅區塊) -->
+    <!-- ========================================================================== -->
+    <section class="hero"> <!-- 建立頂部橫幅區塊 -->
+        <div class="container"> <!-- 置中容器 -->
+            <h1>打造精緻日常：為您精選的北歐極簡家居</h1> <!-- 品牌主標題：強調獨特價值 -->
+            <p>尋找生活的儀式感，從一件對的設計品開始。限時全館免運中。</p> <!-- 副標題：補充品牌理念與即時優惠 -->
+            <a href="#shop" class="btn">立即探索秋季新品</a> <!-- 行動呼籲按鈕 (CTA)，引導點擊跳轉 -->
+        </div> <!-- 結束置中容器 -->
+    </section> <!-- 結束頂部橫幅區塊 -->
+
+    <!-- ========================================================================== -->
+    <!-- 2. CATEGORY SECTION (商品分類區塊) -->
+    <!-- ========================================================================== -->
+    <section class="category"> <!-- 建立分類區塊 -->
+        <div class="container"> <!-- 置中容器 -->
+            <h2>探索熱門分類</h2> <!-- 區塊大標題 -->
+            <p>依照您的生活場景輕鬆挑選</p> <!-- 區塊小副標題 -->
+            <div class="grid-3"> <!-- 開啟 3 欄網格排列佈局 -->
+                <div class="card"> <!-- 第一個分類卡片 -->
+                    <img src="https://unsplash.com" alt="客廳家具"> <!-- 分類情境圖 -->
+                    <h3>客廳美學</h3> <!-- 分類名稱 -->
+                    <p>沙發、茶几與質感擺飾</p> <!-- 分類簡介 -->
+                </div> <!-- 結束第一個分類卡片 -->
+                <div class="card"> <!-- 第二個分類卡片 -->
+                    <img src="https://unsplash.com" alt="臥室寢具"> <!-- 分類情境圖 -->
+                    <h3>舒適臥室</h3> <!-- 分類名稱 -->
+                    <p>純棉被套與放鬆香氛</p> <!-- 分類簡介 -->
+                </div> <!-- 結束第二個分類卡片 -->
+                <div class="card"> <!-- 第三個分類卡片 -->
+                    <img src="https://unsplash.com" alt="廚房器皿"> <!-- 分類情境圖 -->
+                    <h3>品味餐廚</h3> <!-- 分類名稱 -->
+                    <p>日系陶瓷與手沖咖啡具</p> <!-- 分類簡介 -->
+                </div> <!-- 結束第三個分類卡片 -->
+            </div> <!-- 結束網格佈局 -->
+        </div> <!-- 結束置中容器 -->
+    </section> <!-- 結束分類區塊 -->
+
+    <!-- ========================================================================== -->
+    <!-- 3. PRODUCT SHOP SECTION (商品商城區塊) -->
+    <!-- ========================================================================== -->
+    <section id="shop" class="products"> <!-- 建立商城商品區塊，並加上 id 供 Hero 按鈕跳轉 -->
+        <div class="container"> <!-- 置中容器 -->
+            <h2>本週熱銷推薦</h2> <!-- 區塊大標題 -->
+            <p>大家都在買的明星商品，好評販售中</p> <!-- 區塊小副標題 -->
+            <div class="grid-3"> <!-- 開啟 3 欄網格展示商品 -->
+                <div class="card"> <!-- 第一個商品卡片 -->
+                    <img src="https://unsplash.com" alt="原木單人椅"> <!-- 商品照片 -->
+                    <h3>經典經典原木扶手椅</h3> <!-- 商品品名 -->
+                    <p class="price">NT$ 4,800</p> <!-- 商品特價 -->
+                    <a href="#" class="btn">加入購物車</a> <!-- 直接導購按鈕 -->
+                </div> <!-- 結束第一個商品卡片 -->
+                <div class="card"> <!-- 第二個商品卡片 -->
+                    <img src="https://unsplash.com" alt="香氛蠟燭"> <!-- 商品照片 -->
+                    <h3>煙燻琥珀大豆香氛蠟燭</h3> <!-- 商品品名 -->
+                    <p class="price">NT$ 980</p> <!-- 商品特價 -->
+                    <a href="#" class="btn">加入購物車</a> <!-- 直接導購按鈕 -->
+                </div> <!-- 結束第二個商品卡片 -->
+                <div class="card"> <!-- 第三個商品卡片 -->
+                    <img src="https://unsplash.com" alt="極簡陶瓷花瓶"> <!-- 商品照片 -->
+                    <h3>霧面幾何陶瓷花瓶</h3> <!-- 商品品名 -->
+                    <p class="price">NT$ 1,250</p> <!-- 商品特價 -->
+                    <a href="#" class="btn">加入購物車</a> <!-- 直接導購按鈕 -->
+                </div> <!-- 結束第三個商品卡片 -->
+            </div> <!-- 結束網格佈局 -->
+        </div> <!-- 結束置中容器 -->
+    </section> <!-- 結束商品商城區塊 -->
+
+    <!-- ========================================================================== -->
+    <!-- 4. ABOUT SECTION (關於我們區塊) -->
+    <!-- ========================================================================== -->
+    <section class="about"> <!-- 建立關於我們區塊 -->
+        <div class="container"> <!-- 置中容器 -->
+            <h2>我們的故事</h2> <!-- 區塊大標題 -->
+            <div class="about-text"> <!-- 故事文字包覆區 -->
+                <p>我們相信，家不只是休息的地方，更是靈魂的延伸。成立於 2022 年，我們走訪各國工坊，堅持選用對環境友善、製程透明的天然永續材料。我們不盲目追求潮流，只為你帶回經得起時間考驗的日常器物。讓每一個角落，都充滿溫度。</p> <!-- 品牌初衷、堅持與核心價值文案 -->
+            </div> <!-- 結束故事文字包覆區 -->
+        </div> <!-- 結束置中容器 -->
+    </section> <!-- 結束關於我們區塊 -->
+
+    <!-- ========================================================================== -->
+    <!-- 5. NEWSLETTER SECTION (電子報訂閱區塊) -->
+    <!-- ========================================================================== -->
+    <section class="newsletter"> <!-- 建立電子報區塊 -->
+        <div class="container"> <!-- 置中容器 -->
+            <h2>加入 VIP 俱樂部</h2> <!-- 區塊大標題 -->
+            <p>訂閱我們的電子報，第一時間獲取新品通知，首購即享 NT$100 折價券！</p> <!-- 訂閱誘因文案：提供實質利益吸引顧客留存 -->
+            <form class="input-group"> <!-- 建立表單，收集使用者輸入的資料 -->
+                <input type="email" class="email-input" placeholder="請輸入您的 Email 地址" required> <!-- 郵件輸入框：強制要求填寫(required)，並設定提示文字 -->
+                <button type="submit" class="submit-btn">立即訂閱</button> <!-- 提交表單按鈕 -->
+            </form> <!-- 結束表單 -->
+        </div> <!-- 結束置中容器 -->
+    </section> <!-- 結束電子報訂閱區塊 -->
+
+</body> <!-- 結束網頁主體內容區 -->
+</html> <!-- 結束整個 HTML 文件 -->
