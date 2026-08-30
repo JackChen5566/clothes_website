@@ -1,0 +1,1258 @@
+你是一位資深前端工程師。請建立一個完整的「服飾購物網站 Clothing Store Website」，品牌名稱為：
+
+StyleHub
+
+網站用途：
+1. HTML / CSS / JavaScript 前端教學
+2. 可直接放到 GitHub Repository
+3. 可直接使用 GitHub Pages 部署
+4. 不需要任何後端 Server
+5. 所有功能必須只靠原生 HTML、CSS、JavaScript
+6. 最終只輸出一個 index.html
+
+==================================================
+一、檔案要求
+==================================================
+
+最後網站只需要：
+
+clothingWebsite/
+└── index.html
+
+將：
+
+style.css
+main.js
+
+全部合併進 index.html。
+
+CSS 必須放：
+
+<style>
+...
+</style>
+
+JavaScript 必須放：
+
+<script>
+...
+</script>
+
+不要額外建立：
+
+style.css
+main.js
+about.html
+
+網站必須可以直接：
+
+雙擊 index.html 開啟
+
+以及直接部署：
+
+GitHub Pages
+
+不要使用絕對本機路徑，例如：
+
+C:\images\a.jpg
+
+圖片可以先使用 Unsplash HTTPS 網址，例如：
+
+https://images.unsplash.com/...
+
+==================================================
+二、網站品牌
+==================================================
+
+網站名稱：
+
+StyleHub
+
+Logo 以文字呈現：
+
+StyleHub
+
+其中：
+
+Style = 一般主要文字顏色
+Hub = 品牌 Accent Color
+
+整體定位：
+
+現代
+極簡
+時尚
+Lifestyle
+服飾電商
+日常穿搭
+
+網站文字以繁體中文為主。
+
+==================================================
+三、整體頁面結構
+==================================================
+
+index.html 必須包含以下主要結構：
+
+<body>
+
+<header>
+  Navigation
+</header>
+
+<main>
+
+  Hero Section
+
+  Category Section
+
+  Product Shop Section
+
+  About Section
+
+  Newsletter Section
+
+</main>
+
+<footer>
+
+Product Modal
+
+<script>
+
+</body>
+
+==================================================
+四、Navigation 導覽列
+==================================================
+
+最上方建立 Sticky Navigation。
+
+左側：
+
+StyleHub Logo
+
+中間或右側：
+
+商品
+分類
+關於
+訂閱
+
+分別使用 Anchor Link：
+
+#shop
+#category
+#about
+#newsletter
+
+右側功能：
+
+☰ Mobile Menu
+🌙 Dark Mode
+🛒 購物車
+
+購物車旁邊需要顯示：
+
+0
+
+當使用者點擊「加入購物車」時：
+
+0 → 1 → 2 → 3 ...
+
+購物車數量不需要真的建立 Checkout 系統，
+只需要 JavaScript 即時計數。
+
+Navigation 必須：
+
+position: sticky;
+top: 0;
+
+手機版必須變成 Hamburger Menu。
+
+點擊：
+
+☰
+
+顯示：
+
+商品
+分類
+關於
+訂閱
+
+再次點擊或點選選單後可以關閉。
+
+==================================================
+五、Hero Section
+==================================================
+
+首頁 Hero 使用：
+
+左右雙欄 Layout。
+
+Desktop：
+
+左邊：
+文字
+
+右邊：
+Fashion Image
+
+左側內容：
+
+NEW SEASON 2026
+
+大標題：
+
+穿出
+你的風格
+
+介紹文字：
+
+單一 index.html 的服飾購物網站範例，
+CSS 與 JavaScript 全部整合在同一檔案，
+可直接放到 GitHub Pages。
+
+CTA Button：
+
+立即選購
+
+點擊：
+
+href="#shop"
+
+右側使用大型 Fashion 圖片。
+
+圖片：
+
+使用 Unsplash 遠端圖片。
+
+Hero Image：
+
+border-radius 約 25～30px
+
+Desktop 高度約：
+
+500～550px
+
+手機版縮小。
+
+==================================================
+六、熱門分類 Category
+==================================================
+
+建立：
+
+熱門分類
+
+副標題：
+
+點擊分類可直接篩選商品。
+
+建立四個 Category Card：
+
+1.
+上衣
+T-Shirt / Shirt
+
+data-category：
+top
+
+2.
+外套
+Jacket / Coat
+
+data-category：
+jacket
+
+3.
+褲裝
+Jeans / Pants
+
+data-category：
+pants
+
+4.
+配件
+Bag / Shoes
+
+data-category：
+accessory
+
+Desktop：
+
+4 欄
+
+Tablet：
+
+2 欄
+
+Mobile：
+
+1 欄或 2 欄
+
+每個分類卡片可點擊。
+
+例如點：
+
+上衣
+
+JavaScript 自動：
+
+categoryFilter.value = "top"
+
+並捲動至：
+
+#shop
+
+只顯示上衣商品。
+
+==================================================
+七、商品搜尋與篩選
+==================================================
+
+Shop Section 標題：
+
+精選商品
+
+說明：
+
+搜尋、分類與價格篩選。
+
+在商品上方建立 Filter Panel。
+
+包含：
+
+1. Keyword Search
+
+placeholder：
+
+搜尋 T-Shirt、外套、牛仔褲...
+
+2. Category Select
+
+全部分類
+上衣
+外套
+褲裝
+配件
+
+value：
+
+all
+top
+jacket
+pants
+accessory
+
+3. Price Select
+
+全部價格
+1000 以下
+1000–2000
+2000 以上
+
+value：
+
+all
+low
+mid
+high
+
+價格規則：
+
+low：
+price < 1000
+
+mid：
+1000 <= price <= 2000
+
+high：
+price > 2000
+
+4. Reset Button
+
+文字：
+
+重設
+
+按下後：
+
+Keyword 清空
+Category = all
+Price = all
+
+並重新顯示全部商品。
+
+==================================================
+八、商品資料結構
+==================================================
+
+每個商品必須使用：
+
+<article class="product">
+
+並使用 data-* 儲存搜尋資料。
+
+例如：
+
+<article
+ class="product"
+ data-name="純棉 T-Shirt 白色 上衣"
+ data-cat="top"
+ data-price="690">
+
+JavaScript 不使用資料庫。
+
+直接透過：
+
+dataset.name
+dataset.cat
+dataset.price
+
+進行搜尋篩選。
+
+==================================================
+九、建立至少四個商品
+==================================================
+
+商品 1：
+
+名稱：
+經典純棉 T-Shirt
+
+分類：
+top
+
+價格：
+690
+
+顯示：
+NT$ 690
+
+標籤：
+TOP · NEW
+
+介紹：
+
+100% 純棉，標準版型，適合日常穿搭。
+
+==================================================
+
+商品 2：
+
+名稱：
+城市牛仔外套
+
+分類：
+jacket
+
+價格：
+2280
+
+顯示：
+NT$ 2,280
+
+標籤：
+JACKET · BEST
+
+介紹：
+
+中磅丹寧布料，寬鬆剪裁。
+
+==================================================
+
+商品 3：
+
+名稱：
+寬版休閒長褲
+
+分類：
+pants
+
+價格：
+1480
+
+顯示：
+NT$ 1,480
+
+標籤：
+PANTS · NEW
+
+介紹：
+
+俐落寬版剪裁，適合簡約穿搭。
+
+==================================================
+
+商品 4：
+
+名稱：
+極簡休閒鞋
+
+分類：
+accessory
+
+價格：
+1680
+
+顯示：
+NT$ 1,680
+
+標籤：
+SHOES · HOT
+
+介紹：
+
+日常百搭鞋款，
+適合休閒與街頭風格。
+
+==================================================
+十、商品 Card UI
+==================================================
+
+每張商品 Card 包含：
+
+商品圖片
+
+分類 / Tag
+
+商品名稱
+
+價格
+
+兩個按鈕：
+
+查看
+加入購物車
+
+Card Design：
+
+白底
+Rounded Corner
+Border
+Hover Animation
+
+Hover 時：
+
+transform: translateY(-5px);
+
+商品圖片比例：
+
+aspect-ratio: 4 / 5;
+
+object-fit: cover;
+
+==================================================
+十一、商品 Modal
+==================================================
+
+使用 HTML：
+
+<dialog>
+
+建立 Product Detail Modal。
+
+點：
+
+查看
+
+開啟：
+
+modal.showModal()
+
+Modal 顯示：
+
+商品圖片
+商品名稱
+商品價格
+商品介紹
+加入購物車
+關閉 X
+
+「查看」按鈕使用 data-* 保存：
+
+data-title
+data-desc
+data-price
+data-img
+
+JavaScript 將資料帶入：
+
+modalImg
+modalTitle
+modalPrice
+modalDesc
+
+例如：
+
+btn.dataset.title
+btn.dataset.price
+btn.dataset.desc
+btn.dataset.img
+
+關閉方式：
+
+X Button
+
+另外點擊 Dialog 背景也可以關閉。
+
+==================================================
+十二、購物車功能
+==================================================
+
+JavaScript：
+
+let cart = 0;
+
+點擊任何：
+
+加入購物車
+
+執行：
+
+cart++
+
+更新：
+
+cartCount.textContent = cart
+
+例如：
+
+購物車 0
+
+點一次：
+
+購物車 1
+
+點三次：
+
+購物車 3
+
+Modal 裡的：
+
+加入購物車
+
+也必須使用相同功能。
+
+此功能只做 Frontend Demo。
+
+不需要：
+
+Checkout
+Payment
+Database
+Login
+Order API
+
+==================================================
+十三、搜尋功能
+==================================================
+
+Keyword Search 必須即時搜尋。
+
+使用：
+
+input event
+
+例如使用者輸入：
+
+外套
+
+只顯示符合：
+
+data-name
+
+的商品。
+
+搜尋：
+
+T-Shirt
+
+找到 T-Shirt。
+
+搜尋方式：
+
+toLowerCase()
+
+並使用：
+
+includes()
+
+==================================================
+十四、多條件篩選
+==================================================
+
+Filter 必須可以同時使用。
+
+例如：
+
+Keyword：
+
+牛仔
+
+Category：
+
+jacket
+
+Price：
+
+high
+
+三個條件同時成立才顯示。
+
+邏輯：
+
+keywordMatch &&
+categoryMatch &&
+priceMatch
+
+不符合時：
+
+product.hidden = true
+
+符合：
+
+product.hidden = false
+
+若所有商品都不符合：
+
+顯示：
+
+找不到符合條件的商品。
+
+==================================================
+十五、Dark Mode
+==================================================
+
+Navigation 放置：
+
+🌙
+
+點擊切換：
+
+Light Mode
+Dark Mode
+
+Dark Mode 使用：
+
+document.body.classList.toggle("dark")
+
+CSS 使用 CSS Variables：
+
+:root {
+
+--bg
+--card
+--text
+--muted
+--line
+--accent
+
+}
+
+body.dark {
+
+重新定義 CSS Variable
+
+}
+
+例如 Light：
+
+背景：
+#f6f6f3
+
+Card：
+#ffffff
+
+文字：
+#191919
+
+Dark：
+
+背景：
+#111111
+
+Card：
+#1d1d1d
+
+文字：
+#f5f5f5
+
+使用：
+
+localStorage
+
+記錄 Theme：
+
+localStorage.setItem("theme", "dark")
+
+重新整理頁面後仍然保留使用者選擇。
+
+==================================================
+十六、About Section
+==================================================
+
+建立：
+
+關於 StyleHub
+
+Desktop 使用：
+
+左右兩欄。
+
+左：
+
+Fashion Store 圖片。
+
+右：
+
+標題：
+
+關於 StyleHub
+
+內容說明：
+
+這個範例把原本的
+index.html、
+style.css、
+main.js
+
+合併成單一 index.html，
+方便初學者直接上傳 GitHub Pages。
+
+另外介紹網站功能：
+
+RWD
+商品分類
+搜尋篩選
+商品 Modal
+購物車數量
+Dark Mode
+Email 訂閱驗證
+
+==================================================
+十七、Newsletter
+==================================================
+
+建立：
+
+訂閱新品通知
+
+加入：
+
+Email Input
+
+placeholder：
+
+name@example.com
+
+Button：
+
+訂閱
+
+使用：
+
+HTML5 type="email"
+
+加：
+
+required
+
+JavaScript submit 時：
+
+preventDefault()
+
+使用：
+
+email.checkValidity()
+
+Email 正確：
+
+顯示：
+
+訂閱成功！此為前端示範，尚未連接資料庫。
+
+Email 錯誤：
+
+顯示：
+
+請輸入正確 Email。
+
+不用真的寄 Email。
+
+==================================================
+十八、Footer
+==================================================
+
+Footer 顯示：
+
+© 2026 StyleHub · GitHub Pages Demo
+
+年份不要寫死。
+
+JavaScript：
+
+new Date().getFullYear()
+
+例如：
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+==================================================
+十九、RWD Responsive
+==================================================
+
+必須支援：
+
+Desktop
+Tablet
+Mobile
+
+Desktop：
+
+Product：
+4 Columns
+
+Category：
+4 Columns
+
+Hero：
+2 Columns
+
+About：
+2 Columns
+
+Filter：
+
+Search
+Category
+Price
+Reset
+
+同一列。
+
+==================================================
+
+Tablet：
+
+Product：
+2 Columns
+
+Category：
+2 Columns
+
+Hero：
+1 Column
+
+About：
+1 Column
+
+Navigation 使用 Mobile Menu。
+
+==================================================
+
+Mobile：
+
+Product：
+1 Column
+
+Filter：
+1 Column
+
+Modal：
+1 Column
+
+Newsletter：
+1 Column
+
+Hero：
+1 Column
+
+商品 Button 可上下排列。
+
+使用：
+
+@media(max-width:900px)
+
+以及：
+
+@media(max-width:560px)
+
+==================================================
+二十、視覺風格
+==================================================
+
+網站風格：
+
+Minimal
+Fashion
+Modern
+Lifestyle
+Clean Ecommerce
+
+避免：
+
+過多漸層
+過多動畫
+過多顏色
+遊戲風格
+Bootstrap 預設感
+
+主要配色：
+
+背景：
+#f6f6f3
+
+白色 Card：
+#ffffff
+
+文字：
+#191919
+
+灰色：
+#777
+
+Accent：
+#d65d3a
+
+Black：
+#111
+
+Card：
+
+border-radius:
+18px
+
+Hero：
+
+border-radius:
+28px
+
+Section 上下 Padding：
+
+約 60～75px
+
+內容最大寬度：
+
+1180px
+
+==================================================
+二十一、圖片
+==================================================
+
+因為這是一個單檔 GitHub Pages 範例，
+暫時不建立 images 資料夾。
+
+所有商品圖片使用：
+
+https://images.unsplash.com/
+
+必須：
+
+object-fit: cover
+
+商品：
+
+aspect-ratio: 4 / 5
+
+Hero Image：
+
+Fashion / Clothing Store
+
+About Image：
+
+Fashion Store Interior
+
+圖片需要：
+
+alt
+
+例如：
+
+alt="純棉T-Shirt"
+
+==================================================
+二十二、JavaScript Coding Style
+==================================================
+
+使用純 JavaScript。
+
+不要：
+
+jQuery
+React
+Vue
+Angular
+
+可以建立 helper：
+
+const q = s => document.querySelector(s);
+
+const qa = s =>
+    [...document.querySelectorAll(s)];
+
+JavaScript 功能至少分成：
+
+1. Mobile Menu
+
+2. Dark Mode
+
+3. Product Search
+
+4. Category Filter
+
+5. Price Filter
+
+6. Reset Filter
+
+7. Category Quick Link
+
+8. Product Modal
+
+9. Add To Cart
+
+10. Newsletter Validation
+
+11. Dynamic Footer Year
+
+==================================================
+二十三、GitHub Pages 相容性
+==================================================
+
+網站必須完全 Static。
+
+禁止使用：
+
+PHP
+Python Flask
+Django
+Node.js Server
+MySQL
+MongoDB
+
+首頁必須是：
+
+index.html
+
+部署後應可以直接使用：
+
+https://username.github.io/clothingWebsite/
+
+不可使用：
+
+localhost-only API
+
+不可使用：
+
+file:///C:/...
+
+==================================================
+二十四、HTML 品質要求
+==================================================
+
+HTML 必須包含：
+
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+使用 Semantic HTML：
+
+<header>
+<nav>
+<main>
+<section>
+<article>
+<footer>
+
+商品使用：
+
+<article>
+
+Modal 使用：
+
+<dialog>
+
+==================================================
+二十五、最後輸出要求
+==================================================
+
+非常重要：
+
+請直接產生「完整可執行的 index.html」。
+
+不要只產生部分程式碼。
+
+不要使用：
+
+...
+
+或：
+
+// remaining code
+
+或：
+
+同上
+
+所有 HTML、CSS、JavaScript 都必須完整輸出。
+
+整體結構必須是：
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta ...>
+
+<style>
+
+完整 CSS
+
+</style>
+
+</head>
+
+<body>
+
+完整 HTML
+
+<script>
+
+完整 JavaScript
+
+</script>
+
+</body>
+</html>
+
+最後的 index.html 必須能夠：
+
+1. 直接雙擊開啟
+2. 正常顯示商品
+3. 搜尋商品
+4. 篩選分類
+5. 篩選價格
+6. 點擊商品查看 Modal
+7. 加入購物車
+8. 更新購物車數量
+9. 切換 Dark Mode
+10. 記住 Dark Mode
+11. 手機版 Hamburger Menu
+12. Email 格式驗證
+13. RWD
+14. 直接部署 GitHub Pages
+
+不要要求使用者再補程式碼。
+
+請一次輸出完整版本。
